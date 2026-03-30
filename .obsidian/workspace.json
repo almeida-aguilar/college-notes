@@ -150,12 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Sin título.canvas",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Esquema"
+              "title": "Esquema de Sin título"
             }
           }
         ]
@@ -173,9 +174,21 @@
       "daily-notes:Abrir la nota de hoy": false,
       "templates:Insertar plantilla": false,
       "command-palette:Abrir paleta de comandos": false,
-      "bases:Crear nueva base": false
+      "bases:Crear nueva base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6586e1d222d71189",
-  "lastOpenFiles": []
+  "active": "ba71db30b0739f69",
+  "lastOpenFiles": [
+    "Projects",
+    "Concepts",
+    "Sin título.canvas",
+    "University/Portuguese",
+    "University/Image Processing",
+    "University/Compiler Theory",
+    "University/Artificial Intelligence",
+    "University/Networks and Protocols",
+    "University/Web Development",
+    "University"
+  ]
 }
