@@ -1,0 +1,1 @@
+Estas son mi notas universitarías, solo las puse publicas porque no veia razon para ponerlas en privado.
