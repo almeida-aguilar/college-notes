@@ -10,7 +10,7 @@ eles = Ellos
 elas = Ellas
 
 ### Reglas
-H en ingles = R en portugues
+H en ingles = R en portuguesW
 
 Bem-venidos
 ```
