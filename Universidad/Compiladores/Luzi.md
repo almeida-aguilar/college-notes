@@ -28,7 +28,7 @@ Lugo utiliza una sintaxis de declaración clara donde el tipo se define después
 ```Lua
 -- Inmutable (Copia de seguridad)
 const pi: float = 3.14159
-const nombre = "Lugo" -- Inferencia de tipo automática
+const nombre = "Luzi" -- Inferencia de tipo automática
 
 -- Mutable (Puede cambiar su propio valor)
 var contador: int = 0
@@ -100,11 +100,14 @@ Por defecto, los parámetros se pasan por **copia** para evitar efectos secundar
 
 
 ```Lua
--- 'p' es una copia. Los cambios aquí no afectan al original en main.
+-- 'p' es una copia. Los cambios aquí no afectan al original.
 fun simular(p: Player)
     p.Salud = 0 
 end
-
+-- 'const p' indica que recibimos el objeto original solo lectura (Referencia).
+fun simular(const p: Player)
+    p.Salud = 0 
+end
 -- 'var p' indica que recibimos el objeto original (Referencia).
 fun curar(var p: Player, cantidad: int)
     p.Salud = p.Salud + cantidad
@@ -138,7 +141,7 @@ fun main()
     -- El orco se modifica directamente porque la función usa 'var'
     recibir_ataque(orco, daño_espada)
     
-    print("Vida restante: " .. orco.HP)
+    print("Vida restante: ", orco.HP)
 end
 ```
 
@@ -240,3 +243,132 @@ Si solo tuviéramos `struct`, el lenguaje sería muy limitado. Al tener `type`, 
 **¿Qué te parece?** Con esto, `type` deja de ser un "decorador de structs" para convertirse en la herramienta con la que diseñas el dominio de tu aplicación.
 
 ¿Crees que deberíamos permitir que un `type` tenga métodos (como en Go) o preferirías mantener las funciones separadas para que sea más simple?
+
+Aquí tienes el resumen de las decisiones de diseño para **Luzy**, estructurado para que sirva como referencia técnica para tu implementación en **Zig**.
+
+---
+
+# 1. Especificaciones de Diseño: Lenguaje Luzy (v0.1)
+
+Luzy es un lenguaje de scripting de alto rendimiento diseñado para motores de videojuegos, implementado en **Zig**, con un enfoque en la **legibilidad absoluta**, **semántica de copia** y **seguridad de tipos** sin punteros visibles.
+
+---
+
+## 2. Sistema de Variables y Mutabilidad
+
+La mutabilidad y el tipo de dato se infieren o se declaran explícitamente. Se fomenta el uso de convenciones de nomenclatura para la intención del programador.
+
+- **`var`**: Declara una variable mutable (Recomendado: `lower_snake_case`).
+    
+- **`const`**: Declara una constante inmutable (Recomendado: `UPPER_SNAKE_CASE`).
+    
+- **Inferencia**: Si no se usa keyword, el _case_ determina la mutabilidad.
+    
+
+### Parámetros en Funciones
+
+|**Sintaxis**|**Comportamiento**|
+|---|---|
+|`const a: int`|Solo lectura (Inmutable).|
+|`var b: int`|Referencia mutable (Los cambios afectan al exterior).|
+|`c: int`|Semántica de copia (Cualquier cambio es local).|
+
+---
+
+## 3. Tipado Fuerte y Coerción Segura
+
+Luzy evita errores de precisión silenciosos.
+
+- **Sin pérdida de datos**: No se permite asignar un `float` a un `int` si hay decimales significativos.
+    
+- **Promoción automática**: Un `int` se promociona a `float` en operaciones mixtas (ej. `1 + 2.5 = 3.5`).
+    
+- **División**: El operador `/` siempre devuelve un `float`. Para división entera, se usan `//` o `div`.
+    
+
+---
+
+## 4. Gestión de Nulidad y Errores (Inspirado en Zig)
+
+Se eliminan los punteros nulos y las excepciones. Se usan contenedores explícitos.
+
+### Tipos Especiales
+
+- **Opcionales (`?`)**: `Entity?` puede contener una entidad o estar vacío (`null` / `empty`).
+    
+- **Unión de Error (`!`)**: `File!` puede ser un archivo válido o un error (`error` / `broken`).
+    
+- **Combinados (`?!`)**: Puede fallar técnicamente O no existir.
+    
+
+### Keywords de Estado
+
+Para maximizar la legibilidad, el Lexer mapea múltiples términos al mismo estado lógico:
+
+|**Estado**|**Keywords Permitidas**|**Significado**|
+|---|---|---|
+|**Nulidad**|`null`, `empty`|El valor opcional está vacío.|
+|**Fallo**|`error`, `broken`|La variable contiene un fallo técnico.|
+
+---
+
+## 5. Operadores y Gramática
+
+El lenguaje permite redundancia sintáctica para adaptarse al estilo del usuario (técnico o prosa).
+
+### Igualdad y Comparación
+
+- **`is` == `==`**: Son gemelos idénticos en la gramática. Se usan tanto para comparar valores como para checar estados (`empty`, `broken`).
+    
+- **`isnt` == `!=` == `~=`**: Sinónimos para la desigualdad.
+    
+
+### Lógica y Negación
+
+- **Negación Lógica**: Se usan `not` o `~`.
+    
+- **Signo `!`**: Reservado **exclusivamente** para el sistema de errores (tipado y unwrap), no para la negación booleana.
+    
+
+### Manejo de Flujo (Smart Casting)
+
+No se requiere "renombrar" variables (ej. `if target as e`). El compilador realiza un análisis de flujo:
+
+Lua
+
+```
+if target is not empty then
+    -- Dentro de este bloque, 'target' es tratado como el tipo base (sin ?)
+    target.draw() 
+end
+```
+
+---
+
+## 6. Estructuras de Datos
+
+- **Arrays**: Funcionan por **semántica de copia**.
+    
+    Lua
+    
+    ```
+    arr_a = {1, 2, 3}
+    arr_b = arr_a      -- Copia física de los datos
+    arr_a.add(4)       -- Solo afecta a arr_a
+    ```
+    
+- **EECS/DOD**: Diseñado para procesar datos en bloques contiguos de memoria gestionados por los _Allocators_ de Zig del motor anfitrión.
+    
+
+---
+
+## 7. Notas de Implementación (Lexer/Parser)
+
+- **Unificación de Tokens**: El Lexer debe emitir el mismo `TokenID` para sinónimos (ej. `is` y `==`).
+    
+- **Sin Sobrecarga Gramatical**: La gramática solo conoce una regla de "Igualdad". La distinción entre comparar un `int` o un `empty` la resuelve el **Type Checker**.
+    
+- **Keywords Reservadas**: `null`, `empty`, `error`, `broken` son literales del sistema.
+    
+
+---
