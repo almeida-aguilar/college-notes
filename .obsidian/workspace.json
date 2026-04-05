@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Universidad/Compiladores/Luzi.md",
+                "file": "Universidad/Redes y Protocolos/Comunicaciones y Redes de Computadores.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Luzi"
+              "title": "Comunicaciones y Redes de Computadores"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de archivos"
             }
           },
           {
@@ -61,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Buscar"
             }
           },
           {
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "dcf1462ebaf8a4df",
@@ -175,34 +174,35 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6586e1d222d71189",
+  "active": "ba71db30b0739f69",
   "lastOpenFiles": [
-    "2026-04-01.md",
-    "Untitled.canvas",
-    "Universidad/Compiladores/Luzi.md",
-    "Universidad/Procesamiento de Imágenes/Semana 1.md",
-    "Universidad/Compiladores",
-    "Universidad/Portugues/Semana 1.md",
-    "Universidad/Procesamiento de Imágenes",
+    "Imagenes/2026-04-05T13 20 27,718081388-05 00.png",
     "README.md",
+    "Imagenes/2026-04-05T12 33 45,959775954-05 00.png",
+    "Universidad/Redes y Protocolos/Comunicaciones y Redes de Computadores.md",
+    "Imagenes",
+    "University/Portuguese/Semana 1.md",
+    "Universidad/Sin nombre",
+    "Universidad/Redes y Protocolos",
+    "Universidad/Procesamiento de Imágenes/Semana 1.md",
+    "Universidad/Compiladores/Luzi.md",
+    "Universidad/Procesamiento de Imágenes",
+    "Universidad/Compiladores",
+    "Universidad",
     "Sin título.canvas",
     "Projects",
     "Concepts",
-    "Universidad/Portugues",
-    "University/Image Processing",
-    "University/Compiler Theory",
-    "University/Artificial Intelligence",
-    "University/Networks and Protocols",
-    "University/Web Development"
+    "University/Portuguese",
+    "University/Image Processing"
   ]
 }
