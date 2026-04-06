@@ -42,6 +42,10 @@ Además de hacer un camino entre 2 dispositivos se deben realizar otras operacio
 2. La fuente debe preparar al destino para recibir dichos datos.
 3. El software debe que transfiere los datos debe asegurarse que el software de destino acepte y almacene los datos.
 4. Si el formato de los datos enviados es incompatible con el entorno de destino, entonces, se debe realizar una traducción.
+**Protocolo:**
+- Sintaxis: formato de los bloques de datos.
+- Semántica: coordinación y gestión de errores.
+- Temporización: sintonización de velocidades y secuenciación.
 ## 2.2. Una arquitectura de protocolos simple
 ## 2.3. OSI
 ## 2.4. Arquitectura de protocolos TCP/IP

@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiLanguages",
+      "🇧🇷",
       "LiEye",
       "LiFileImage",
-      "LiNetwork",
-      "LiImage",
-      "LiComputer"
+      "LiNetwork"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -39,5 +39,6 @@
   "Universidad/Procesamiento de Imágenes": "LiImage",
   "Universidad/Redes y Protocolos": "LiNetwork",
   "Imagenes": "LiFileImage",
-  "README.md": "LiEye"
+  "README.md": "LiEye",
+  "Universidad/Portugués": "LiLanguages"
 }

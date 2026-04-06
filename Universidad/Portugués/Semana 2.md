@@ -1,0 +1,9 @@
+| Español  | Portugués |
+| -------- | --------- |
+| Hermanos | Irmãos    |
+| Tio      | Tio       |
+| Oso      | Urso      |
+| Hueso    | Osso      |
+| Apodo    | Apelido   |
+| Apellido | Sobrenome |
+| Deletrar | Soletrear |
