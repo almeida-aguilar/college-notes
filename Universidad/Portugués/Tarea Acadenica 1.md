@@ -6,7 +6,7 @@ Sou estudante de Ciências da Computação
 
 Em meu tempo de lazer, escuto música, assisto filmes, jogo vídeo games ou trabalho no projeto pessoal.
 
-Costumo escutar música quando limpo ou faço as tarefas. Minhas bandas favoritas são: AJR, Cryoshell, Good Kid, Half Alive e muito mais.
+Costumo escutar música quando limpo ou faço as tarefas da faculdade. Minhas bandas favoritas são: AJR, Cryoshell, Good Kid, Half Alive e muito mais.
 
 Meus tipos de filmes favoritos são ficção científica, mistério e comédia.
 
